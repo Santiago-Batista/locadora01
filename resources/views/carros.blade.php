@@ -223,6 +223,37 @@
             color: var(--text-muted);
             font-size: 14px;
         }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-logout {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text-muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .btn-logout:hover {
+            color: #e05252;
+            border-color: rgba(224,82,82,0.35);
+            background: rgba(224,82,82,0.06);
+        }
+
+        .btn-logout svg { width: 15px; height: 15px; fill: currentColor; }
     </style>
 </head>
 <body>
@@ -236,10 +267,19 @@
             <div class="brand-name">Car<span>System</span></div>
         </div>
 
-        <a href="/carros/novo" class="btn-primary">
-            <svg viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
-            Novo Carro
-        </a>
+        <div class="header-actions">
+            <a href="/carros/novo" class="btn-primary">
+                <svg viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"/></svg>
+                Novo Carro
+            </a>
+            <form method="POST" action="/logout" style="margin:0;">
+                @csrf
+                <button type="submit" class="btn-logout">
+                    <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+                    Sair
+                </button>
+            </form>
+        </div>
     </header>
 
     <div class="page-title">Frota de Veículos</div>

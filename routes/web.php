@@ -7,6 +7,11 @@ use App\Http\Controllers\SistemaController;
 Route::get('/', [SistemaController::class, 'login']);
 Route::post('/logar', [SistemaController::class, 'logar']);
 
+Route::post('/logout', function () {
+    session()->flush();
+    return redirect('/');
+});
+
 Route::get('/carros', [SistemaController::class, 'listar']);
 Route::get('/carros/novo', [SistemaController::class, 'novo']);
 Route::post('/carros/store', [SistemaController::class, 'salvar']);
